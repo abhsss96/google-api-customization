@@ -1,24 +1,19 @@
-require 'debugger'
-require 'rubygems'
-require 'httparty'
-
-%w(request place api_key photo review).each do |file|
-  require File.join(File.dirname(__FILE__), 'google_api_customization', file)
-end
-
+require "httparty"
+require_relative "google_api_customization/version"
+require_relative "google_api_customization/errors"
+require_relative "google_api_customization/request"
+require_relative "google_api_customization/place"
+require_relative "google_api_customization/api_key"
+require_relative "google_api_customization/photo"
+require_relative "google_api_customization/review"
 
 module GoogleApiCustomization
-  
   class << self
-
     attr_accessor :api_key
 
     def configuration
-      
       yield self
-      
     end
-
   end
-
 end
+
