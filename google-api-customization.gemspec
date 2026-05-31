@@ -5,11 +5,32 @@ Gem::Specification.new do |spec|
   spec.version       = GoogleApiCustomization::VERSION
   spec.authors       = ["Abhishek Sharma"]
   spec.email         = ["abhsss96@gmail.com"]
-  spec.summary       = "Ruby gem to expand usage of Google API with Rails"
-  spec.description   = "A wrapper around the Google Places API supporting place lookup, text search, nearby search, photos, reviews, and autocomplete."
+  spec.summary       = "Google Places API wrapper for Rails — place search, details, photos, reviews, autocomplete"
+  spec.description   = <<~DESC
+    google-api-customization is a Ruby wrapper around the Google Places API that
+    makes it easy to integrate place discovery into Rails applications.
+
+    Features:
+    - Place detail lookup by place ID (name, address, phone, rating, hours, photos, reviews)
+    - Text search for places by query string with optional location bias
+    - Nearby search by coordinates and radius
+    - Autocomplete for place names and addresses
+    - Photo URL resolution
+    - Full error handling (OverQueryLimitError, RequestDeniedError, NotFoundError, etc.)
+    - Configurable retry logic with delay
+
+    Built on HTTParty for HTTP and supports the legacy Google Places API endpoints.
+  DESC
   spec.homepage      = "https://github.com/abhsss96/google-api-customization"
   spec.license       = "MIT"
   spec.required_ruby_version = ">= 2.7"
+
+  spec.metadata = {
+    "homepage_uri"    => "https://github.com/abhsss96/google-api-customization",
+    "source_code_uri" => "https://github.com/abhsss96/google-api-customization",
+    "bug_tracker_uri" => "https://github.com/abhsss96/google-api-customization/issues",
+    "changelog_uri"   => "https://github.com/abhsss96/google-api-customization/releases"
+  }
 
   spec.files         = Dir["lib/**/*", "README.md", "*.gemspec"]
   spec.require_paths = ["lib"]
