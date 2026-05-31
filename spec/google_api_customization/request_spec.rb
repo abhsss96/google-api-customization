@@ -93,4 +93,62 @@ RSpec.describe GoogleApiCustomization::Request do
       end
     end
   end
+
+  describe "RADAR_SEARCH_URL constant" do
+    it "is defined only once (no duplicate constant warning)" do
+      constants = described_class.constants.select { |c| c == :RADAR_SEARCH_URL }
+      expect(constants.length).to eq(1)
+    end
+  end
+
+  describe ".nearby_search" do
+    before do
+      stub_request(:get, GoogleApiCustomization::Request::NEARBY_SEARCH_URL)
+        .with(query: hash_including({}))
+        .to_return(
+          status: 200,
+          body: { "status" => "OK", "results" => [] }.to_json,
+          headers: { "Content-Type" => "application/json" }
+        )
+    end
+
+    it "makes a request to NEARBY_SEARCH_URL and returns the parsed response" do
+      result = described_class.nearby_search(location: "37.7749,-122.4194", radius: 500, key: api_key, sensor: false)
+      expect(result["status"]).to eq("OK")
+    end
+  end
+
+  describe ".text_search" do
+    before do
+      stub_request(:get, GoogleApiCustomization::Request::TEXT_SEARCH_URL)
+        .with(query: hash_including({}))
+        .to_return(
+          status: 200,
+          body: { "status" => "OK", "results" => [] }.to_json,
+          headers: { "Content-Type" => "application/json" }
+        )
+    end
+
+    it "makes a request to TEXT_SEARCH_URL and returns the parsed response" do
+      result = described_class.text_search(query: "restaurants in Sydney", key: api_key, sensor: false)
+      expect(result["status"]).to eq("OK")
+    end
+  end
+
+  describe ".autocomplete" do
+    before do
+      stub_request(:get, GoogleApiCustomization::Request::AUTOCOMPLETE_URL)
+        .with(query: hash_including({}))
+        .to_return(
+          status: 200,
+          body: { "status" => "OK", "predictions" => [] }.to_json,
+          headers: { "Content-Type" => "application/json" }
+        )
+    end
+
+    it "makes a request to AUTOCOMPLETE_URL and returns the parsed response" do
+      result = described_class.autocomplete(input: "Sydney", key: api_key, sensor: false)
+      expect(result["status"]).to eq("OK")
+    end
+  end
 end

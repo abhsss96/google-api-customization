@@ -19,12 +19,25 @@ module GoogleApiCustomization
 
     PAGETOKEN_URL               =          "https://maps.googleapis.com/maps/api/place/search/json"
 
-    RADAR_SEARCH_URL            =          "https://maps.googleapis.com/maps/api/place/radarsearch/json"
-
     AUTOCOMPLETE_URL            =          "https://maps.googleapis.com/maps/api/place/autocomplete/json"
-     
+
     def self.place(options = {})
       request = new(PLACES_URL, options)
+      request.parsed_response
+    end
+
+    def self.nearby_search(options = {})
+      request = new(NEARBY_SEARCH_URL, options)
+      request.parsed_response
+    end
+
+    def self.text_search(options = {})
+      request = new(TEXT_SEARCH_URL, options)
+      request.parsed_response
+    end
+
+    def self.autocomplete(options = {})
+      request = new(AUTOCOMPLETE_URL, options)
       request.parsed_response
     end
     

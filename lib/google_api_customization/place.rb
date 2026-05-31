@@ -93,6 +93,35 @@ module GoogleApiCustomization
       request(:spots_by_query, multipage_request, exclude, options)
     end
 
+    def self.list_by_nearby(lat, lng, radius, api_key, sensor, options = {})
+      multipage_request = !!options.delete(:multipage)
+      location = Location.new(lat, lng)
+      rankby = options.delete(:rankby)
+      language = options.delete(:language)
+      types = options.delete(:types)
+      exclude = options.delete(:exclude) || []
+      retry_options = options.delete(:retry_options) || {}
+
+      exclude = [exclude] unless exclude.is_a?(Array)
+
+      options = {
+        :location => location.format,
+        :radius   => radius,
+        :sensor   => sensor,
+        :key      => api_key,
+        :rankby   => rankby,
+        :language => language,
+        :retry_options => retry_options
+      }
+
+      if types
+        types = (types.is_a?(Array) ? types.join('|') : types)
+        options.merge!(:types => types)
+      end
+
+      request(:spots_by_nearby, multipage_request, exclude, options)
+    end
+
     def self.request(method, multipage_request, exclude, options)
       results = []
 
