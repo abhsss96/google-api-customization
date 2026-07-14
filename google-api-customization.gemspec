@@ -29,7 +29,8 @@ Gem::Specification.new do |spec|
     "homepage_uri"    => "https://github.com/abhsss96/google-api-customization",
     "source_code_uri" => "https://github.com/abhsss96/google-api-customization",
     "bug_tracker_uri" => "https://github.com/abhsss96/google-api-customization/issues",
-    "changelog_uri"   => "https://github.com/abhsss96/google-api-customization/releases"
+    "changelog_uri"   => "https://github.com/abhsss96/google-api-customization/releases",
+    "tags"            => "google-places-api, google-maps, places-api, geolocation, autocomplete, place-search, poi, location-based-services, httparty, rails"
   }
 
   spec.files         = Dir["lib/**/*", "README.md", "*.gemspec"]
