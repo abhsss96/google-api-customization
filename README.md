@@ -1,8 +1,11 @@
 # google-api-customization
 
+[![Gem Version](https://img.shields.io/gem/v/google-api-customization?logo=rubygems)](https://rubygems.org/gems/google-api-customization)
 [![Gem Downloads](https://img.shields.io/gem/dt/google-api-customization)](https://rubygems.org/gems/google-api-customization)
 
 A Ruby gem that wraps the Google Places API for use in Rails applications. Supports place details, text search, nearby search, radar search, photos, reviews, and autocomplete.
+
+**Tags:** google-places-api, google-maps, places-api, geolocation, autocomplete, place-search, poi, location-based-services, httparty, rails
 
 ## Installation
 
