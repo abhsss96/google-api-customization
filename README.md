@@ -81,3 +81,10 @@ end
 ## Dependencies
 
 - [httparty](https://github.com/jnunemaker/httparty)
+
+## Contributing
+
+A handful of enhancement ideas are tracked as open issues — see the
+[open issues](https://github.com/abhsss96/google-api-customization/issues) list. Some are
+tagged [`good first issue`](https://github.com/abhsss96/google-api-customization/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
+if you're looking for a small, well-scoped place to start contributing.
